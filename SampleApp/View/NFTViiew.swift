@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NFTViiew: View {
+    // FIXME: static data to be replaced with VM fetchNFT call
     @State var data = [
         FetchedNFT(image: ("person"), title: "first nft"),
         FetchedNFT(image: ("person"), title: "first nft"),
@@ -29,6 +30,8 @@ struct NFTViiew: View {
         
         
     }
+    
+    // FIXME: 
     func generateGrid(){
         for i in stride(from: 0, to: self.data.count, by: 2){
             if i != self.data.count{
@@ -45,7 +48,7 @@ struct NFTViiew_Previews: PreviewProvider {
     }
 }
 
-//MARK:-
+// MARK:-
 
 struct CardView:View{
     var data:FetchedNFT
