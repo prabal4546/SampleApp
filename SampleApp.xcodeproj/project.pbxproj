@@ -16,6 +16,7 @@
 		6D8F36852906B7060076B5CC /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F36842906B7060076B5CC /* ViewModel.swift */; };
 		6D8F36892907F6020076B5CC /* NFTViiew.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F36882907F6020076B5CC /* NFTViiew.swift */; };
 		6D8F368C2907FE980076B5CC /* FetchedNFT.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D8F368B2907FE980076B5CC /* FetchedNFT.swift */; };
+		8837FAA62909E78400BE192B /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8837FAA52909E78400BE192B /* LoginView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		6D8F36842906B7060076B5CC /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		6D8F36882907F6020076B5CC /* NFTViiew.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NFTViiew.swift; sourceTree = "<group>"; };
 		6D8F368B2907FE980076B5CC /* FetchedNFT.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FetchedNFT.swift; sourceTree = "<group>"; };
+		8837FAA52909E78400BE192B /* LoginView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -92,6 +94,7 @@
 		6D8F36822906B6AC0076B5CC /* View */ = {
 			isa = PBXGroup;
 			children = (
+				8837FAA52909E78400BE192B /* LoginView.swift */,
 				6D8F36702901B7A90076B5CC /* ContentView.swift */,
 				6D8F36882907F6020076B5CC /* NFTViiew.swift */,
 			);
@@ -190,6 +193,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8837FAA62909E78400BE192B /* LoginView.swift in Sources */,
 				6D8F368C2907FE980076B5CC /* FetchedNFT.swift in Sources */,
 				6D8F36712901B7A90076B5CC /* ContentView.swift in Sources */,
 				6D8F36892907F6020076B5CC /* NFTViiew.swift in Sources */,
