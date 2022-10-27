@@ -8,40 +8,51 @@
 import SwiftUI
 
 struct LoginView: View {
+    
+    @StateObject private var vm = ViewModel()
+    
     var body: some View {
-        ZStack{
+        
+        if vm.isAuthenticated{
             
-            Color("Background")
-            .ignoresSafeArea()
+            NFTViiew()
             
-            
-            VStack{
+        }
+        
+        else {
+            ZStack{
                 
-                Spacer()
-              
-                
-                Image("metaplex_pdf")
-                .resizable()
-                //Not sure what width, height to put?
-                .frame(width: 300.0, height: 120.0)
-                
-
-                
-                Button("Login with Phantom",role: .cancel){}
-                //Not sure what width, height to put?
-                .frame(width: 300.0, height: 50.0)
-                .background(Color("Green"))
-                .foregroundColor(Color("Neutral90"))
-                .bold()
-                .padding()
+                Color("Background")
+                    .ignoresSafeArea()
                 
                 
-                
-                Spacer()
-                Text("Created by Metaplex")
-                    .foregroundColor(.gray)
-                
-              
+                VStack{
+                    
+                    Spacer()
+                    
+                    
+                    Image("metaplex_pdf")
+                        .resizable()
+                    //Not sure what width, height to put?
+                        .frame(width: 300.0, height: 120.0)
+                    
+                    
+                    
+                    Button("Login with Phantom",role: .cancel, action: vm.authenticate)
+                    //Not sure what width, height to put?
+                        .frame(width: 300.0, height: 50.0)
+                        .background(Color("Green"))
+                        .foregroundColor(Color("Neutral90"))
+                        .bold()
+                        .padding()
+                    
+                    Spacer()
+                    Text("Created by Metaplex")
+                        .foregroundColor(.gray)
+                    
+                    
+                    
+                }
                 
             }
             
