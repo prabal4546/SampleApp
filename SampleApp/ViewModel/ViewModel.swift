@@ -6,3 +6,23 @@
 //
 
 import Foundation
+import SwiftUI
+
+final class ViewModel: ObservableObject{
+    
+    
+    @Published var isAuthenticated: Bool = false{
+        willSet{objectWillChange.send()}
+    }
+    
+    
+    func authenticate(){
+        
+        isAuthenticated.toggle()
+    
+        
+    }
+    
+    
+}
+
