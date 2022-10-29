@@ -15,7 +15,7 @@ struct LoginView: View {
         
         if vm.isAuthenticated{
             
-            NFTViiew()
+            NFTView()
             
         }
         
@@ -49,9 +49,6 @@ struct LoginView: View {
                     Spacer()
                     Text("Created by Metaplex")
                         .foregroundColor(.gray)
-                    
-                    
-                    
                 }
                 
             }

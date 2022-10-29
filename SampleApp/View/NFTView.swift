@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NFTViiew: View {
+struct NFTView: View {
     // FIXME: static data to be replaced with VM fetchNFT call
     @State var data = [
         FetchedNFT(image: ("person"), title: "first nft"),
@@ -42,9 +42,9 @@ struct NFTViiew: View {
     }
 }
 
-struct NFTViiew_Previews: PreviewProvider {
+struct NFTView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTViiew()
+        NFTView()
     }
 }
 
@@ -69,7 +69,8 @@ struct CardView:View{
                 .foregroundColor(.white)
                     
             }
-        }.background(Color("CardBackground"), ignoresSafeAreaEdges: .all)
+        }
+        .background(Color("CardBackground"), ignoresSafeAreaEdges: .all)
             .cornerRadius(20)
             
             .padding()
@@ -93,9 +94,6 @@ struct MainView:View{
                                     }
                                     
                                 }
-//                                if i == self.Grid.last && self.data.count % 2 != 0{
-//                                    Spacer(minLength: 0)
-//                                }
                             }
                         }
                     }
