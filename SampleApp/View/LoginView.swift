@@ -15,7 +15,7 @@ struct LoginView: View {
         
         if vm.isAuthenticated{
             
-            NFTViiew()
+            NFTView()
             
         }
         
