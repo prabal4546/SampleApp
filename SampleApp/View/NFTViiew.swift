@@ -88,7 +88,15 @@ struct MainView:View{
                                 ForEach(i...i+1,id:\.self){j in
                                     VStack{
                                         if j != self.data.count{
+                                            
+                                            NavigationLink{
+                                                
+                                                NFTDetailView()
+                                                
+                                            }
+                                        label:{
                                             CardView(data: self.data[j])
+                                        }
                                         }
                                     }
                                     
