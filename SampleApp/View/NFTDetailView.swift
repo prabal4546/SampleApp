@@ -10,8 +10,32 @@ import SwiftUI
 struct NFTDetailView: View {
     var body: some View {
         
-        // Temporary, will be replaced with the referenced NFT Detail View UI
-        Text("NFT Detail View")
+        
+        
+        ZStack{
+            
+            Color("Background")
+                .ignoresSafeArea()
+            
+            
+            VStack{
+                
+                ScrollView{
+                    
+                    TopHalfNFTView()
+                    MintView()
+                    
+                    
+                }
+                .edgesIgnoringSafeArea(.all)
+                .foregroundColor(.white)
+                
+                
+            }
+        }
+        
+        
+        
     }
 }
 
