@@ -12,3 +12,15 @@ struct FetchedNFT{
     var title:String
     var description:String?
 }
+
+
+struct NFTTopHalfDetail{
+    
+    var title:String
+    var description:String
+    var image:String
+    var attributes:[String : String]
+    
+}
+
+
