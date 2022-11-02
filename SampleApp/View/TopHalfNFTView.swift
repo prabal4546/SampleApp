@@ -6,7 +6,7 @@
 //
 import SwiftUI
 
-struct NFTDetailTopHalfView: View {
+struct TopHalfNFTView: View {
     
     @State var data = NFTTopHalfDetail(title: "OnlyHands 3266", description: "OnlyHands is a series of 3,337 custom designed NFTs on the Solana Blockchain. We are also the FIRST EVER community driven animated NFT series.", image: "person", attributes: ["BACKGROUND" : "GREEN", "EYEBROWS" : "ORIGINAL", "EYES": "ORIGINAL", "NAILS": "BLACK", "NECKLACE": "NOTHING", "HATS": "DRINKHAT", "MOUTH": "NORMAL", "SCARS": "NOTHING", "RINGS": "NOTHING", "SKINS": "TAN2", "SHOES": "NOTHING", "TATTOSS": "NOTHING"])
     
@@ -44,7 +44,9 @@ struct NFTDetailTopHalfView: View {
                         .scaledToFit()
                         .frame(width: 300.0, height: 300.0)
                         .offset(y:80)
+                    
                 }
+                .padding(.bottom)
                 
                 VStack{
                     
@@ -85,9 +87,9 @@ struct NFTDetailTopHalfView: View {
         }
 }
 
-struct NFTDetailTopHalfView_Previews: PreviewProvider {
+struct TopHalfNFTView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTDetailTopHalfView()
+        TopHalfNFTView()
     }
 }
 

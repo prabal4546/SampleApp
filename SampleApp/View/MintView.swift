@@ -11,7 +11,7 @@ import SwiftUI
 
  struct MintView: View {
      var body: some View {
-         NavigationView {
+         
              VStack {
                  VStack {
                      HStack{
@@ -32,6 +32,7 @@ import SwiftUI
                      }
 
                  }.padding()
+                 
                  VStack {
                      HStack{
                          Text("Overview")
@@ -104,7 +105,7 @@ import SwiftUI
                  }.padding()
              }
          }
-     }
+     
  }
 
  struct MintView_Previews: PreviewProvider {
