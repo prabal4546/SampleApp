@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NFTViiew: View {
+struct NFTView: View {
     // FIXME: static data to be replaced with VM fetchNFT call
     @State var data = [
         FetchedNFT(image: ("person"), title: "first nft"),
@@ -42,9 +42,9 @@ struct NFTViiew: View {
     }
 }
 
-struct NFTViiew_Previews: PreviewProvider {
+struct NFTView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTViiew()
+        NFTView()
     }
 }
 
@@ -88,7 +88,15 @@ struct MainView:View{
                                 ForEach(i...i+1,id:\.self){j in
                                     VStack{
                                         if j != self.data.count{
+                                            
+                                            NavigationLink{
+                                                
+                                                NFTDetailView()
+                                                
+                                            }
+                                        label:{
                                             CardView(data: self.data[j])
+                                        }
                                         }
                                     }
                                     
