@@ -22,10 +22,40 @@ struct Test_NFTFetch: View {
 //                    Text(homeVM.nftList.first?.name ?? "falied")
 //                Text("\(homeVM.nftList.count)")
                     ForEach(actualNFT.indices,id:\.self){index in
-                        HStack(spacing:10){
+                        VStack(spacing:10){
+                            
+                            
+                            AsyncImage(url: URL(string: "https://kai1.kaizencorps.com/g1/main/3168.png")){
+                                image in
+                                
+                                image
+                                    .resizable()
+                                    .scaledToFit()
+                                
+                            }
+                            
+                        placeholder: {
+                            Image(systemName: "photo")
+                                .resizable()
+                                .scaledToFit()
+                        }
+                            
+        
+//
+//                            actualNFT[index].metadata(metaplex: self.homeVM.metaplex , onComplete: { result in
+//                            switch result {
+//                                case .success(let metadata):
+//                                print(metadata.image!)
+//                                case .failure:
+//                                    break
+//                                }
+//                            })
+//
+                            
+                            
                             Text(actualNFT[index].name)
                                 .font(.caption)
-                            .foregroundColor(.white)
+//                            .foregroundColor(.white)
                             
 //                            AsyncImage(url: URL(string: actualNFT[index].metadata(metaplex: self.homeVM.metaplex, onComplete: { result in
 //                                switch result {

@@ -25,10 +25,20 @@ class NetworkingVM: ObservableObject{
             switch result {
             case .success(let nftList):
                 self?.nftList = nftList.compactMap{ $0 }
-                print(nftList)
-//                for i in 0..<nftList.count{
-//
-//                }
+//                print(nftList)
+                for i in 0..<nftList.count{
+                    
+                    nftList[i]?.metadata(metaplex: self!.metaplex , onComplete: { result in
+                    switch result {
+                        case .success(let metadata):
+                        print("Print URL count \(i):")
+                        print(metadata.image ?? "Image String Error")
+                        case .failure:
+                            break
+                        }
+                    })
+
+                }
             case .failure:
                 break
             }
