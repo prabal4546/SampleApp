@@ -50,11 +50,11 @@ struct TopHalfNFTView: View {
                 
                 VStack{
                     
-                    Text("OnlyHands 3266")
+                    Text(data.title)
                         .font(.largeTitle)
                         .padding()
                     
-                    Text("OnlyHands is a series of 3,337 custom designed NFTs on the Solana Blockchain. We are also the FIRST EVER community driven animated NFT series.")
+                    Text(data.description)
                         .foregroundColor(.gray)
                         .padding(.horizontal)
                     
