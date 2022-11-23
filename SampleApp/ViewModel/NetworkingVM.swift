@@ -11,7 +11,7 @@ import SwiftUI
 import UIKit
 
 
-struct NFTHolder {
+struct NFTHolder:Hashable {
     let name: String
     let descritpion: String
     let imageURL:String
@@ -24,7 +24,7 @@ class NetworkingVM: ObservableObject{
 //    UIKit: Geh5Ss5knQGym81toYGXDbH3MFU2JCMK7E4QyeBHor1b
     
     @Published var nftList:[NFT] = []
-    var nftDetailsList:[NFTHolder] = []
+    @Published var nftDetailsList:[NFTHolder] = []
 //    var NFTURLs: [String] = []
     var metaplex: Metaplex = {
         let solana = SolanaConnectionDriver(endpoint: RPCEndpoint.mainnetBetaSolana)
@@ -43,7 +43,10 @@ class NetworkingVM: ObservableObject{
                                 print("Name: \(metadata.name!)")
                                 print("Description: \(metadata.description!)")
                                 print("URL: \(metadata.image!)")
+                            DispatchQueue.main.async{
                                 self?.nftDetailsList.append(NFTHolder(name: metadata.name!, descritpion: metadata.description!, imageURL: metadata.image!))
+
+                            }
                                 print(self!.nftDetailsList)
                             case .failure:
                                 print("FAILUREEE")

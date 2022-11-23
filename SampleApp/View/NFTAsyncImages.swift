@@ -14,8 +14,22 @@ struct NFTAsyncImages: View {
     @StateObject var vm = NetworkingVM()
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
-            .onAppear(perform: vm.loadNFTImages)
+        VStack{
+            if let fetchedImages = vm.nftDetailsList{
+                ForEach(fetchedImages, id: \.self) { image in
+                    List {
+                        HStack{
+                            AsyncImage(url: URL(string: image.imageURL))
+                    
+                            Text(image.name)
+                            
+                        }
+                    }
+                }
+            }
+        }.onAppear{
+            vm.loadNFTImages()
+        }
     }
 }
 
