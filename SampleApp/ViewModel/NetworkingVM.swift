@@ -11,13 +11,6 @@ import SwiftUI
 import UIKit
 
 
-struct NFTHolder:Hashable {
-    let name: String
-    let descritpion: String
-    let imageURL:String
-}
-
-
 class NetworkingVM: ObservableObject{
     var ownerPublicKey = PublicKey(string: "Geh5Ss5knQGym81toYGXDbH3MFU2JCMK7E4QyeBHor1b")!
     
@@ -36,7 +29,7 @@ class NetworkingVM: ObservableObject{
         metaplex.nft.findAllByOwner(publicKey: ownerPublicKey) { [weak self] result in
             switch result {
                 case .success(let nftList):
-                    for i in 0..<5{
+                    for i in 0..<10{
                         nftList[i]?.metadata(metaplex: self!.metaplex , onComplete: { result in
                         switch result {
                             case .success(let metadata):
@@ -44,7 +37,7 @@ class NetworkingVM: ObservableObject{
                                 print("Description: \(metadata.description!)")
                                 print("URL: \(metadata.image!)")
                             DispatchQueue.main.async{
-                                self?.nftDetailsList.append(NFTHolder(name: metadata.name!, descritpion: metadata.description!, imageURL: metadata.image!))
+                                self?.nftDetailsList.append(NFTHolder(name: metadata.name!, description: metadata.description!, imageURL: metadata.image!))
 
                             }
                                 print(self!.nftDetailsList)
