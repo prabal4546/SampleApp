@@ -9,14 +9,11 @@ import SwiftUI
 
 struct LoginView: View {
     
-    @StateObject private var vm = ViewModel()
+    @StateObject private var vm = LogInViewModel()
     
     var body: some View {
-        
         if vm.isAuthenticated{
-            
-            NFTView()
-            
+            NFTGridView()
         }
         
         else {
@@ -24,7 +21,6 @@ struct LoginView: View {
                 
                 Color("Background")
                     .ignoresSafeArea()
-                
                 
                 VStack{
                     

@@ -6,26 +6,23 @@
 //
 
 import SwiftUI
+import Metaplex
 
 struct NFTView: View {
+    @StateObject var homeVM:NetworkingVM = NetworkingVM()
     // FIXME: static data to be replaced with VM fetchNFT call
-    @State var data = [
-        FetchedNFT(image: ("person"), title: "first nft"),
-        FetchedNFT(image: ("person"), title: "first nft"),
-        FetchedNFT(image: ("person"), title: "first nft"),
-        FetchedNFT(image: ("person"), title: "first nft")
-    ]
     
     @State var Grid:[Int] = []
     var body: some View {
         NavigationView {
             VStack {
-                MainView(data: self.$data, Grid: self.$Grid)
+                MainView(data: homeVM.nftList, Grid: self.$Grid)
             }.navigationBarItems(leading: Image("metaplex_logo"), trailing: Text("owner key").foregroundColor(.white))
                 .background(Color("Background"), ignoresSafeAreaEdges: .all)
         }
         .onAppear{
             self.generateGrid()
+            homeVM.viewLoaded()
         }
         
         
@@ -33,8 +30,8 @@ struct NFTView: View {
     
     // FIXME: 
     func generateGrid(){
-        for i in stride(from: 0, to: self.data.count, by: 2){
-            if i != self.data.count{
+        for i in stride(from: 0, to: self.homeVM.nftList.count, by: 2){
+            if i != self.homeVM.nftList.count{
                 self.Grid.append(i)
             }
             
@@ -51,41 +48,54 @@ struct NFTView_Previews: PreviewProvider {
 // MARK:-
 
 struct CardView:View{
-    var data:FetchedNFT
+    @StateObject var homeVM:NetworkingVM = NetworkingVM()
+    
+    var data:NFT
     var body: some View{
+        
         VStack(spacing: 0){
-            Image(data.image)
-                .resizable()
-                .aspectRatio( contentMode: .fill)
-                .frame(width: (UIScreen.main.bounds.width - 55)/2, height: 150)
-            Spacer()
-            ZStack {
-                RoundedRectangle(cornerRadius: 30, style: .continuous)
-                    .fill(Color("CardBackground"))
-                    .frame(width: (UIScreen.main.bounds.width - 55)/2, height: 50)
-                
-                Text(data.title)
-                    .font(.caption)
-                .foregroundColor(.white)
+            if homeVM.nftList.count == 0{
+                ProgressView()
+            }else{
+                Image(uiImage: UIImage(named: "person")!)
+                    .resizable()
+                    .aspectRatio( contentMode: .fill)
+                    .frame(width: (UIScreen.main.bounds.width - 55)/2, height: 150)
+                Spacer()
+                ZStack {
+                    RoundedRectangle(cornerRadius: 30, style: .continuous)
+                        .fill(Color("CardBackground"))
+                        .frame(width: (UIScreen.main.bounds.width - 55)/2, height: 50)
                     
+                    Text(data.name)
+                        .font(.caption)
+                    .foregroundColor(.white)
+                 }
+                
+
             }
-        }.background(Color("CardBackground"), ignoresSafeAreaEdges: .all)
+        }.onAppear {
+            homeVM.viewLoaded()
+        }
+        .background(Color("CardBackground"), ignoresSafeAreaEdges: .all)
             .cornerRadius(20)
             
             .padding()
     }
 }
 struct MainView:View{
-    @Binding var data:[FetchedNFT]
+     var data:[NFT]
     @Binding var Grid:[Int]
+    @StateObject var homeVM:NetworkingVM = NetworkingVM()
     var body: some View{
+        let actualNFT = homeVM.nftList[0..<homeVM.nftList.count]
         VStack{
             if !self.Grid.isEmpty{
                 ScrollView(.vertical, showsIndicators: false){
                     VStack(spacing: 5) {
                         ForEach(self.Grid,id:\.self) { i in
                             HStack(spacing:5){
-                                ForEach(i...i+1,id:\.self){j in
+                                ForEach(actualNFT.indices,id:\.self){j in
                                     VStack{
                                         if j != self.data.count{
                                             
@@ -95,7 +105,7 @@ struct MainView:View{
                                                 
                                             }
                                         label:{
-                                            CardView(data: self.data[j])
+                                            CardView(data: actualNFT[j])
                                         }
                                         }
                                     }
@@ -111,6 +121,9 @@ struct MainView:View{
                 }
             }
             
+        }
+        .onAppear{
+            homeVM.viewLoaded()
         }
     }
 }
