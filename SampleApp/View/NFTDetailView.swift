@@ -9,14 +9,11 @@ import SwiftUI
 
 struct NFTDetailView: View {
     var body: some View {
-        
-        
-        
+         
         ZStack{
             
             Color("Background")
                 .ignoresSafeArea()
-            
             
             VStack{
                 
