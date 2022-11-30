@@ -34,8 +34,12 @@ class NetworkingVM: ObservableObject{
                         switch result {
                             case .success(let metadata):
                                 print("Name: \(metadata.name!)")
-                                print("Description: \(metadata.description!)")
-                                print("URL: \(metadata.image!)")
+//                                print("Description: \(metadata.description!)")
+//                                print("URL: \(metadata.image!)")
+                            
+//                                print("ATTRIBUTES: \(metadata.attributes)")
+                            
+                            
                             DispatchQueue.main.async{
                                 self?.nftDetailsList.append(NFTHolder(name: metadata.name!, description: metadata.description!, imageURL: metadata.image!))
 

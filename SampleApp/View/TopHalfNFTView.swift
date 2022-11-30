@@ -8,6 +8,8 @@ import SwiftUI
 
 struct TopHalfNFTView: View {
     
+    let nft: NFTHolder
+    
     @State var data = NFTTopHalfDetail(title: "OnlyHands 3266", description: "OnlyHands is a series of 3,337 custom designed NFTs on the Solana Blockchain. We are also the FIRST EVER community driven animated NFT series.", image: "person", attributes: ["BACKGROUND" : "GREEN", "EYEBROWS" : "ORIGINAL", "EYES": "ORIGINAL", "NAILS": "BLACK", "NECKLACE": "NOTHING", "HATS": "DRINKHAT", "MOUTH": "NORMAL", "SCARS": "NOTHING", "RINGS": "NOTHING", "SKINS": "TAN2", "SHOES": "NOTHING", "TATTOSS": "NOTHING"])
     
     var body: some View {
@@ -19,11 +21,19 @@ struct TopHalfNFTView: View {
                         
                         ZStack{
                             
-                            Image(data.image)
-                                
-                                .resizable()
-                                .frame(height: 400.0)
-                                .blur(radius: 5)
+                            
+                            AsyncImage(
+                                url:URL(string: nft.imageURL),
+                                content: { image in
+                                    image
+                                        .resizable()
+                                        .frame(height: 400.0)
+                                        .blur(radius: 5)
+                                },
+                                placeholder: {
+                                    ProgressView()
+                                }
+                                        )
                             
                             
                             Rectangle()
@@ -37,24 +47,32 @@ struct TopHalfNFTView: View {
                         .edgesIgnoringSafeArea(.all)
                         Spacer()
                     }
-         
-                    Image(data.image)
                     
-                        .resizable()
-                        .scaledToFit()
-                        .frame(width: 300.0, height: 300.0)
-                        .offset(y:80)
+                    
+                    AsyncImage(
+                        url:URL(string: nft.imageURL),
+                        content: { image in
+                            image
+                                .resizable()
+                                .scaledToFit()
+                                .frame(width: 300.0, height: 300.0)
+                                .offset(y:80)
+                        },
+                        placeholder: {
+                            ProgressView()
+                        }
+                                )
                     
                 }
                 .padding(.bottom)
                 
                 VStack{
                     
-                    Text(data.title)
+                    Text(nft.name)
                         .font(.largeTitle)
                         .padding()
                     
-                    Text(data.description)
+                    Text(nft.description)
                         .foregroundColor(.gray)
                         .padding(.horizontal)
                     
@@ -89,7 +107,7 @@ struct TopHalfNFTView: View {
 
 struct TopHalfNFTView_Previews: PreviewProvider {
     static var previews: some View {
-        TopHalfNFTView()
+        TopHalfNFTView(nft: MockData.sampleNFT)
     }
 }
 

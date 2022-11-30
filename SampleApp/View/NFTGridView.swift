@@ -6,6 +6,8 @@
 //
 
 import SwiftUI
+import Solana
+import Metaplex
 
 struct NFTGridView: View {
     
@@ -28,7 +30,7 @@ struct NFTGridView: View {
                             
                             nft in
                             NavigationLink{
-                                  NFTDetailView()
+                                  NFTDetailView(nft: nft)
                               }
                           label:{
                               NFTCellView(nft: nft)

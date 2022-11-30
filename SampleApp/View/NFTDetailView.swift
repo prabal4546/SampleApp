@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct NFTDetailView: View {
+    let nft: NFTHolder
     var body: some View {
          
         ZStack{
@@ -19,7 +20,7 @@ struct NFTDetailView: View {
                 
                 ScrollView{
                     
-                    TopHalfNFTView()
+                    TopHalfNFTView(nft: nft)
                     MintView()
                     
                     
@@ -38,6 +39,6 @@ struct NFTDetailView: View {
 
 struct NFTDetailView_Previews: PreviewProvider {
     static var previews: some View {
-        NFTDetailView()
+        NFTDetailView(nft: MockData.sampleNFT)
     }
 }
